@@ -1,0 +1,380 @@
+/* ======================
+   📍 Address Autocomplete Suggestions
+   ====================== */
+.autocomplete-suggestions {
+  background: #2b2b2b;
+  border: 1px solid #666;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 6px;
+}
+.autocomplete-suggestions div {
+  padding: 8px;
+  cursor: pointer;
+  color: #eeecec;
+}
+.autocomplete-suggestions div:hover {
+  background: #444;
+}
+
+/* ======================
+   🌙 Base Page Styling
+   ====================== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1b1b1b; /* Adjusted for a solid dark background */
+  color: #ddd;
+  min-height: 100vh;
+  display: flex; /* Use flexbox for body */
+  flex-direction: column; /* Stack children vertically */
+}
+
+/* ======================
+   🌡️ Container Box Styles
+   ====================== */
+.login-container {
+  margin-top: 2em;
+}
+.register-container,
+.support-container {
+  background-color: #1b1b1b;
+  padding: 0; /* Remove padding here, add to internal elements if needed */
+  border-radius: 0;
+  box-shadow: none;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.register-container input,
+.register-container button {
+  margin-bottom: 16px;
+}
+
+.bg-container {
+  position: relative;
+  background-position: top center;
+  background-size: cover; /* Changed to cover for better filling */
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+  background: url('images/airpro_logo_new.png') center top / cover no-repeat;
+  background-color: #1b1b1b; /* Adjusted */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 2em;
+  text-align: center;
+  color: white;
+  max-width: 500px;
+  width: 100%;
+}
+
+
+/* ======================
+   🔻 Logo Above Form
+   ====================== */
+.logo {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* ======================
+   📥 Inputs and Textareas
+   ====================== */
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #111;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #1b1b1b9b;
+  color: white;
+}
+
+/* ==========================
+  Role Selector Box
+  ========================== */
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #111;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #1b1b1b;
+  color: white;
+  appearance: none;
+}
+
+/* Optional: add a custom down arrow using background */
+select:focus {
+  border-color: #660879;
+  box-shadow: 0 0 4px #660879;
+  outline: none;
+}
+
+
+/* ======================
+   🔘 Primary Action Buttons (excluding icon buttons)
+   ====================== */
+button:not(.icon-auth) {
+  background-color: #660879;
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:not(.icon-auth):hover {
+  background-color: #7b1e8e; /* Slightly darker on hover */
+}
+
+/* ======================
+   🔗 Register/Login Toggle Links
+   ====================== */
+.link {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.link a {
+  color: #660879;
+  text-decoration: none;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.text-logout {
+  background: none;
+  color: #660879;
+  padding: 0;
+  font-weight: bold;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ======================
+   🛑 Hide Element Class
+   ====================== */
+.hidden {
+  display: none;
+}
+
+/* ======================
+   ⚠️ Firebase Error Message
+   ====================== */
+.status-message {
+  color: #ff6f6f;
+  font-size: 0.9em;
+  margin-top: 1em;
+  text-align: center;
+  min-height: 1.2em;
+}
+
+
+/* ======================
+   🔐 Social Login Buttons (Logo-Only, No Border)
+   ====================== */
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.icon-auth {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  transition: transform 0.15s ease;
+}
+
+ .icon-auth img {
+  height: 22px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+.icon-auth:hover {
+  transform: scale(1.1);
+}
+
+/* ======================
+   🌀 Purple Loading Spinner
+   ====================== */
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #661fd8;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: none;
+}
+
+.spinner.show {
+  display: block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ======================
+   📱 Mobile Polishing
+   ====================== */
+@media (max-width: 450px) {
+  .login-container,
+  .register-container {
+    padding: 20px;
+    max-width: 92%;
+    border-radius: 8px;
+  }
+
+  .logo {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input,
+  textarea {
+    font-size: 12px;
+    padding: 9px;
+  }
+
+  button:not(.icon-auth) {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+
+  .social-buttons {
+    gap: 12px;
+  }
+
+  .icon-auth {
+    width: 38px;
+    height: 38px;
+  }
+
+  .status-message {
+    font-size: 0.85em;
+  }
+
+
+  /* 🛑 Kill gray overlay on clicks for the full page */
+  body:focus,
+  body:active,
+  *:focus,
+  *:active {
+    outline: none;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* 🛑 Dim past job cards */
+  .job-card.past {
+  opacity: 0.5;
+  filter: grayscale(60%);
+  }
+
+
+  /* ✅ But keep highlight for input and textarea focus */
+  input:focus,
+  textarea:focus {
+    background-color: #1b1b1b;
+    border-color: #660879;
+    outline: none;
+    box-shadow: 0 0 4px #660879;
+  }
+
+}
+
+/* Add this after your existing media query ends */
+@media (max-width: 450px) {
+  .content {
+    padding: 1.2em;
+  }
+}
+
+/* Status colors */
+.status-unassigned {
+  background-color: #dc3545;
+  color: white;
+}
+
+.status-assigned {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.status-in-progress {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.status-completed {
+  background-color: #28a745;
+  color: white;
+}
